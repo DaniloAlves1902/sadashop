@@ -12,7 +12,7 @@ document.querySelectorAll('.quantity-btn').forEach(button => {
         const input = this.parentNode.querySelector('.quantity-input');
         let value = parseInt(input.value);
 
-        if (this.textContent === '+' && value < 1) {
+        if (this.textContent === '+' && value < 10) {
             input.value = value + 1;
         } else if (this.textContent === '-' && value > 1) {
             input.value = value - 1;
