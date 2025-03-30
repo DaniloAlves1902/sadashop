@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - Sada Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css para animações -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Google Fonts - Nunito -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/products.css">
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Sada Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#produtos">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contato-section">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="https://1.bp.blogspot.com/-PiCqus0kDlg/VEaXds84omI/AAAAAAAAGhE/7tOJH4F5nho/s1600/Fluttershy-Wedding-Bridle-Friends-2.jpg" id="main-product-image" class="img-fluid main-product-image" alt="Product Image">
+                    <div class="thumbnail-images">
+                        <img src="https://1.bp.blogspot.com/-PiCqus0kDlg/VEaXds84omI/AAAAAAAAGhE/7tOJH4F5nho/s1600/Fluttershy-Wedding-Bridle-Friends-2.jpg" class="thumbnail" alt="Thumbnail 1" onclick="changeMainImage(this.src)">
+                        <img src="https://3.bp.blogspot.com/-FsQ9pDHlgvQ/VEaXdovmkWI/AAAAAAAAGhA/9ZwlwNnJ0I4/s1600/Fluttershy-Wedding-Bridle-Friends-1.jpg" class="thumbnail" alt="Thumbnail 2" onclick="changeMainImage(this.src)">
+                        <img src="https://cdn.suruga-ya.com/database/pics_webp/game/602163101.jpg.webp" class="thumbnail" alt="Thumbnail 3" onclick="changeMainImage(this.src)">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="product-title" id="product-title"></h1>
+                    <div class="review-stars mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="ms-2">(24 avaliações)</span>
+                    </div>
+                    <p class="product-price" id="product-price">R$ 59,99</p>
+                    <p class="product-description" id="product-description"></p>
+
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Disponível em estoque</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Entrega em 2-4 dias úteis</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-undo"></i>
+                            <span>30 dias para devolução</span>
+                        </div>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <button onclick="decreaseQuantity()">-</button>
+                        <input type="number" id="quantity" value="1" min="1" max="10">
+                        <button onclick="increaseQuantity()">+</button>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary btn-lg">Adicionar ao Carrinho</button>
+                        <button class="btn btn-outline-primary btn-lg">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-category">
+                        <strong>Categoria:</strong> <span id="product-category">My Little Pony</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab">Descrição</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab">Especificações</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">Avaliações</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="productTabsContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        <p id="product-long-description">
+                            <!-- Descrição detalhada será inserida via JavaScript -->
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="specifications" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Informações do Produto</h5>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Marca</td>
+                                            <td>My Little Pony</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Modelo</td>
+                                            <td id="product-model">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Idade Recomendada</td>
+                                            <td>3+ anos</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Material</td>
+                                            <td>Plástico não tóxico</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dimensões</td>
+                                            <td>15cm x 5cm x 20cm</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>O que vem na caixa</h5>
+                                <ul id="product-contents">
+                                    <!-- Conteúdo da caixa será inserido via JavaScript -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <strong>Ana Silva</strong>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p>Minha filha adorou! As cores são vibrantes e a qualidade é excelente. Recomendo!</p>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <strong>Carlos Mendes</strong>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                            <p>Ótimo produto para colecionadores, bem fiel ao desenho animado. Apenas achei o preço um pouco alto.</p>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <strong>Patricia Almeida</strong>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p>Entrega rápida e produto de qualidade! Minha filha não larga mais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="related-title">Produtos Relacionados</h2>
+            <div class="row g-4">
+                <!-- Related Product 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card">
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/425x425/f2e6ff/333333?text=Rarity" class="product-image" alt="Rarity">
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">My Little Pony Rarity</h5>
+                            <p class="product-description">Rarity com acessórios de moda e cabelo brilhante.</p>
+                            <p class="product-price">R$ 39,99</p>
+                            <div class="product-button-container">
+                                <a href="product.html?id=7" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card">
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/425x425/ffcce6/333333?text=Pinkie+Pie" class="product-image" alt="Pinkie Pie">
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">Pinkie Pie Cutie Mark Magic</h5>
+                            <p class="product-description">Pinkie Pie com efeitos aquáticos e surpresas.</p>
+                            <p class="product-price">R$ 34,99</p>
+                            <div class="product-button-container">
+                                <a href="product.html?id=4" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card">
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/425x425/e3d1ff/333333?text=Princess+Luna" class="product-image" alt="Princess Luna">
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">Princess Luna Rainbow Power</h5>
+                            <p class="product-description">Boneca Princess Luna com acessórios.</p>
+                            <p class="product-price">R$ 29,99</p>
+                            <div class="product-button-container">
+                                <a href="product.html?id=1" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card product-card">
+                        <div class="product-image-container">
+                            <img src="https://via.placeholder.com/425x425/ffecf9/333333?text=Princess+Celestia" class="product-image" alt="Princess Celestia">
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">Princess Celestia Rainbow Shimmer</h5>
+                            <p class="product-description">Princesa Celestia com asas coloridas.</p>
+                            <p class="product-price">R$ 49,99</p>
+                            <div class="product-button-container">
+                                <a href="product.html?id=2" class="btn btn-primary">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Sada Shop</h5>
+                    <p>Brinquedos que despertam sorrisos e criam memórias inesquecíveis.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Navegar</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#sobre">Sobre Nós</a></li>
+                        <li><a href="index.html#produtos">Produtos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="index.html#contato-section">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Categorias</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">My Little Pony</a></li>
+                        <li><a href="#">Educativos</a></li>
+                        <li><a href="#">Jogos</a></li>
+                        <li><a href="#">Pelúcias</a></li>
+                        <li><a href="#">Lançamentos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Atendimento</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Trocas</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 Sada Shop. Todos os direitos reservados.</p>
+                <p>Desenvolvido por <a href="https://www.linkedin.com/in/danilo-de-figueiredo-alves-103262327/" target="_blank">Danilo Alves</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript para esta página -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Função para obter parâmetros da URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Função para preencher a página com detalhes do produto
+        function loadProductDetails() {
+            const productId = getUrlParameter('id');
+            
+            // Base de dados simulada de produtos
+            const products = [
+                {
+                    id: 1,
+                    title: "Princess Luna Rainbow Power",
+                    description: "Boneca Princess Luna com acessórios e efeitos brilhantes.",
+                    price: "R$ 29,99",
+                    image: "https://via.placeholder.com/425x425/e3d1ff/333333?text=Princess+Luna",
+                    category: "My Little Pony",
+                    model: "LP-2023-001",
+                    longDescription: "A boneca Princess Luna Rainbow Power é uma adição mágica à sua coleção de My Little Pony. Com detalhes meticulosos e cores vibrantes, esta figura captura perfeitamente a essência da Princesa da Noite. A boneca tem efeitos brilhantes que se iluminam quando você pressiona sua cutie mark, criando um espetáculo mágico que vai encantar crianças e colecionadores. Seus acessórios incluem uma tiara removível, um colar e um pequeno livro de feitiços.",
+                    contents: [
+                        "1 Boneca Princess Luna Rainbow Power",
+                        "1 Tiara removível",
+                        "1 Colar mágico",
+                        "1 Livro de feitiços",
+                        "Guia de instruções"
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Princess Celestia Rainbow Shimmer",
+                    description: "Princesa Celestia com asas coloridas e efeitos luminosos.",
+                    price: "R$ 49,99",
+                    image: "https://via.placeholder.com/425x425/ffecf9/333333?text=Princess+Celestia",
+                    category: "My Little Pony",
+                    model: "LP-2023-002",
+                    longDescription: "A boneca Princess Celestia Rainbow Shimmer traz toda a majestade da governante de Equestria para sua coleção. Com asas detalhadas que mostram um gradiente de cores do arco-íris, esta figura é simplesmente deslumbrante. Quando você toca no chifre da Celestia, pequenas luzes se acendem nas asas, criando um efeito luminoso encantador. A crina e a cauda são feitas com material especial que reflete a luz, acrescentando ainda mais magia à figura.",
+                    contents: [
+                        "1 Boneca Princess Celestia Rainbow Shimmer",
+                        "1 Coroa real removível",
+                        "1 Colar com pingente",
+                        "1 Cetro real",
+                        "Guia de instruções com mini histórias"
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "My Little Pony Twilight Sparkle",
+                    description: "Boneca Twilight Sparkle com cabelo colorido e acessórios mágicos.",
+                    price: "R$ 39,99",
+                    image: "https://m.media-amazon.com/images/I/71+MlYTJh7L._AC_SX425_.jpg",
+                    category: "My Little Pony",
+                    model: "LP-2023-003",
+                    longDescription: "A boneca Twilight Sparkle traz a mais estudiosa e mágica pônei de Equestria para sua coleção. Com seu cabelo em tons de azul e roxo meticulosamente estilizado, esta figura captura perfeitamente a personalidade da Princesa da Amizade. Seus acessórios incluem livros mágicos e uma pequena coroa que brilha no escuro. A boneca tem articulações que permitem várias poses, perfeita para recriar cenas favoritas do desenho animado ou inventar novas aventuras.",
+                    contents: [
+                        "1 Boneca Twilight Sparkle",
+                        "3 Mini livros mágicos",
+                        "1 Coroa da amizade que brilha no escuro",
+                        "1 Mapa de Equestria",
+                        "Certificado de Princesa da Amizade"
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "Pinkie Pie Cutie Mark Magic: Water Cuties Wave 1",
+                    description: "Pinkie Pie com efeitos aquáticos e muitas surpresas.",
+                    price: "R$ 34,99",
+                    image: "https://via.placeholder.com/425x425/ffcce6/333333?text=Pinkie+Pie",
+                    category: "My Little Pony",
+                    model: "LP-2023-004",
+                    longDescription: "A Pinkie Pie Cutie Mark Magic: Water Cuties Wave 1 traz diversão aquática para brincar! Basta colocar água fria na barriga dela para ver sua cutie mark mudar magicamente de cor. Com uma crina rosa exuberante que pode ser penteada e estilizada, esta boneca da mais divertida pônei de Ponyville vem com vários acessórios temáticos de festa para criar momentos de diversão e felicidade. É perfeita para brincadeiras na água ou para expandir sua coleção de My Little Pony.",
+                    contents: [
+                        "1 Boneca Pinkie Pie Water Cuties",
+                        "1 Mini pente colorido",
+                        "3 Acessórios de festa",
+                        "1 Mini bolo decorativo",
+                        "1 Pipoqueira de festa"
+                    ]
+                },
+                {
+                    id: 5,
+                    title: "My Little Pony Rainbow Dash",
+                    description: "Rainbow Dash com asas articuladas e acessórios coloridos.",
+                    price: "R$ 44,99",
+                    image: "https://m.media-amazon.com/images/I/81O3ivH0+SL._AC_SX425_.jpg",
+                    category: "My Little Pony",
+                    model: "LP-2023-005",
+                    longDescription: "A boneca Rainbow Dash traz toda a energia e velocidade da mais rápida pônei de Equestria. Com suas asas articuladas que podem ser posicionadas de diferentes maneiras, esta figura permite recriar as acrobacias aéreas incríveis que os fãs adoram. Sua crina arco-íris é macia e pode ser penteada, enquanto seus olhos grandes e expressivos capturam perfeitamente a personalidade confiante e leal de Rainbow Dash. É a companheira perfeita para aventuras velozes e coloridas!",
+                    contents: [
+                        "1 Boneca Rainbow Dash",
+                        "1 Par de óculos de voo",
+                        "1 Troféu de corrida",
+                        "1 Medalha dos Wonderbolts",
+                        "1 Mini nuvem de tempestade"
+                    ]
+                },
+                {
+                    id: 6,
+                    title: "My Little Pony Fluttershy",
+                    description: "Fluttershy com seus amiguinhos animais e acessórios.",
+                    price: "R$ 37,99",
+                    image: "https://via.placeholder.com/425x425/ffd6e7/333333?text=Fluttershy",
+                    category: "My Little Pony",
+                    model: "LP-2023-006",
+                    longDescription: "A boneca Fluttershy traz a mais gentil e tímida pônei de Equestria junto com seus adoráveis amiguinhos animais. Com sua longa crina rosa pálido que cai graciosamente sobre seu rosto, esta figura captura perfeitamente a doçura e sensibilidade que os fãs amam. Acompanha pequenos animais de estimação que podem se encaixar no casco da Fluttershy ou se apoiar em suas asas. É perfeita para crianças que adoram animais e para ensinar valores de gentileza e cuidado.",
+                    contents: [
+                        "1 Boneca Fluttershy",
+                        "3 Mini animais de estimação (coelhinho, esquilo e passarinho)",
+                        "1 Cesto para alimentar os animais",
+                        "1 Mini borboleta que se conecta em sua crina",
+                        "1 Diário de cuidados com animais"
+                    ]
+                },
+                {
+                    id: 7,
+                    title: "My Little Pony Rarity",
+                    description: "Rarity com acessórios de moda e cabelo brilhante.",
+                    price: "R$ 39,99",
+                    image: "https://via.placeholder.com/425x425/f2e6ff/333333?text=Rarity",
+                    category: "My Little Pony",
+                    model: "LP-2023-007",
+                    longDescription: "A boneca Rarity traz",
+                    contents: [
+                        "1 Boneca Rarity",
+                        "1 Mini pente colorido",
+                        "1 Mini bolo decorativo",
+                        "1 Mini nuvem de tempestade",
+                        "1 Mini pipoqueira de festa"
+                    ]
+                },
+                {
+                    id: 8,
+                    title: "My Little Pony Twilight Sparkle",
+                    description: "Boneca Twilight Sparkle com cabelo colorido e acessórios mágicos.",
+                    price: "R$ 39,99",
+                    image: "https://m.media-amazon.com/images/I/71+MlYTJh7L._AC_SX425_.jpg",
+                    category: "My Little Pony",
+                    model: "LP-2023-008",
+                    longDescription: "A boneca Twilight Sparkle traz",
+                    contents: [
+                        "1 Boneca Twilight Sparkle",
+                        "1 Mini pente colorido",
+                        "1 Mini bolo decorativo",
+                        "1 Mini nuvem de tempestade",
+                        "1 Mini pipoqueira de festa"
+                    ]
+                }       
+            ];
+        }
+    </script>
+</body>
+</html>
